@@ -15,14 +15,19 @@ public class PostulacionesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(nullable = false, name = "fecha_postulacion")
     private LocalDate fechaPostulacion;
+
     @Column(nullable = false, name = "nombre_de_la_vacante", length = 150)
     private String nombreDeLaVacante;
-    @Column(nullable = false, name = "empresa_de_la_vacante", length = 75)
+
+    @Column(nullable = false, name = "empresa_de_la_vacante", length = 70)
     private String empresaDeLaVacante;
+
     @Column(name = "bolsa_de_empleo", length = 100)
     private String bolsaDeEmpleo;
+
     @Column(name = "url_de_la_vacante")
     private String urlDeLaVacante;
 }
