@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,6 +29,10 @@ public class PostulacionesDTO {
         dto.setEstado(historial.getEstadoPostulacion().getEstadoDeLaPostulacion());
         dto.setBolsaDeEmpleo(historial.getPostulacion().getBolsaDeEmpleo());
         dto.setUrl(historial.getPostulacion().getUrlDeLaVacante());
+        String estd = historial.getEstadoPostulacion().getEstadoDeLaPostulacion();
+        if (!estd.equals("Contratado") && !estd.equals("Rechazado")) {
+            dto.setDiasSinRespuesta((int) ChronoUnit.DAYS.between(historial.getFechaCambio(), LocalDate.now()));
+        }
         return dto;
     }
 }
